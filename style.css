@@ -36,6 +36,7 @@
   align-items: center;
   list-style: none;
   gap: 10px;
+  margin-bottom: 35px;
 }
 
 .display .letter {

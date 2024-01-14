@@ -3,16 +3,27 @@ const display = document.querySelector(".display");
 const counter = document.querySelector(".counter");
 const hangman = document.querySelector(".gallows-image");
 const modalWindow = document.querySelector(".modal-window");
+const playAgain = modalWindow.querySelector("button");
 let secretWord;
-let wrongLetter = 0;
-let correctLetters = [];
+let wrongLetter;
+let correctLetters;
 const maxTry = 6;
+
+const newGame = () => {
+  correctLetters = [];
+  wrongLetter = 0;
+  hangman.src = "images/hangman-0.svg";
+  counter.innerText = `${wrongLetter} / ${maxTry}`;
+  display.innerHTML = secretWord.split("").map(() => `<li class="letter"></li>`).join("");
+  keyboard.querySelectorAll("button").forEach(el => el.disabled = false);
+  modalWindow.classList.remove("visible");
+}
 
 const getSecretWord = () => {
     const { word, hint } = words[Math.floor(Math.random() * words.length)];
     secretWord = word;
-    document.querySelector(".inner-text").innerText = hint;
-    display.innerHTML = word.split("").map(() => `<li class="letter"></li>`).join("");
+    document.querySelector(".clue").innerText = hint;
+    newGame();
 }
 
 const gameOver = (win) => {
@@ -52,3 +63,4 @@ for (let i = 97; i <= 122; i += 1){
 }
 
 getSecretWord();
+playAgain.addEventListener("click", getSecretWord);
