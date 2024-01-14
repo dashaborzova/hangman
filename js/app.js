@@ -24,6 +24,7 @@ const startGame = (button, clicked) => {
   } else {
     wrongLetter += 1;
   }
+  button.disabled = true;
   counter.innerText = `${wrongLetter} / ${maxTry}`;
   hangman.src = `images/hangman-${wrongLetter}.svg`;
 }
