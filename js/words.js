@@ -12,7 +12,7 @@ const words = [
         hint: "A number of things tied or wrapped together."
     },
     {
-        word: "chatbot ",
+        word: "chatbot",
         hint: "A computer program that can hold a conversation with a person, usually over the internet."
     },
     {
