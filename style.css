@@ -99,3 +99,37 @@
 .keyboard button:hover {
   background-color: #a1a2be;
 }
+
+.modal-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  z-index: 10;
+  padding: 0 10px;
+  display: none;
+}
+
+.modal-window .modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #aa88bc;
+  max-width: 420px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.play {
+  padding: 15px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+}
