@@ -17,7 +17,6 @@
 
 .container {
   width: 900px;
-  height: 50vh;
   display: flex;
   align-items: flex-end;
   gap: 40px;
@@ -50,6 +49,7 @@
 
 .display .letter.guessed {
   margin: -8px 0 35px 0;
+  border-color: transparent;
 }
 
 .hint,
@@ -132,4 +132,37 @@
   padding: 15px 25px;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.play:hover{
+  background: #a1a2be;
+}
+
+@media (max-width: 782px) {
+  .container {
+    flex-direction: column;
+    padding: 30px 15px;
+    align-items: center;
+  }
+  .gallows-image {
+    max-width: 200px;
+  }
+  
+  .quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .display .letter {
+    margin-bottom: 35px;
+    font-size: 1.5rem;
+  }
+
+  .display .letter.guessed {
+    margin-bottom: 35px;
+    font-size: 1.5rem;
+    margin: -35px 0 25px;
+  }
 }
