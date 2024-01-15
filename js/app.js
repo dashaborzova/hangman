@@ -2,12 +2,42 @@ const keyboard = document.querySelector(".keyboard");
 const display = document.querySelector(".display");
 const counter = document.querySelector(".counter");
 const hangman = document.querySelector(".gallows-image");
-const modalWindow = document.querySelector(".modal-window");
-const playAgain = modalWindow.querySelector("button");
+
+const body = document.querySelector("body");
 let secretWord;
 let wrongLetter;
 let correctLetters;
 const maxTry = 6;
+
+document.body.insertAdjacentHTML('afterbegin', '<div class="modal-window"></div>');
+const modalWrapper = document.querySelector(".modal-wrapper");
+document.querySelector('body div:first-of-type').insertAdjacentHTML('afterbegin', '<div class="modal-wrapper"></div>');
+document.querySelector('.modal-wrapper').insertAdjacentHTML('afterbegin', '<h3 class="text">Game Over</h3>');
+document.querySelector('.modal-wrapper').insertAdjacentHTML('beforeend', '<p class="inner-text">The word was : something </p>');
+document.querySelector('.modal-wrapper').insertAdjacentHTML('beforeend', '<button class="play">Play again</button>');
+
+const playAgain = document.querySelector(".play");
+const modalWindow = document.querySelector(".modal-window");
+
+// modalWindow.insertAdjacentHTML('afterend', '<div class="container"></div>');
+// const container = document.querySelector(".container");
+// container.insertAdjacentHTML('afterbegin', '<div class="gallows"></div>');
+// const gallows = document.querySelector(".gallows");
+// gallows.insertAdjacentHTML('afterbegin', '<img class="gallows-image" src="./images/hangman-0.svg" alt="gallows">');
+// container.insertAdjacentHTML('beforeend', '<div class="quiz"></div>');
+// const quiz = document.querySelector(".quiz");
+// quiz.insertAdjacentHTML('afterbegin', '<ul class="display"></ul>');
+// display.insertAdjacentHTML('afterbegin', '<h3 class="hint text">Hint: </h3>');
+
+
+const gameOver = (win) => {
+  const modalText = win ? `You guessed the word: ` : `The secret word was :`;
+  modalWindow.querySelector("h3").innerText = `${win ? `Good job!` : `Better luck next time!`}`
+  modalWindow.querySelector("p").innerHTML = `${modalText} ${secretWord}`;
+    setTimeout(() => {
+    modalWindow.classList.add("visible")
+  }, 300);
+}
 
 const newGame = () => {
   correctLetters = [];
@@ -19,6 +49,7 @@ const newGame = () => {
   modalWindow.classList.remove("visible");
 }
 
+
 const getSecretWord = () => {
     const { word, hint } = words[Math.floor(Math.random() * words.length)];
     secretWord = word;
@@ -26,14 +57,7 @@ const getSecretWord = () => {
     newGame();
 }
 
-const gameOver = (win) => {
-  const modalText = win ? `You guessed the word: ` : `The secret word was :`;
-  modalWindow.querySelector("h3").innerText = `${win ? `Good job!` : `Better luck next time!`}`
-  modalWindow.querySelector("p").innerHTML = `${modalText} ${secretWord}`;
-    setTimeout(() => {
-    modalWindow.classList.add("visible")
-  }, 300);
-}
+
 
 const startGame = (button, clicked) => {
   if(secretWord.includes(clicked)) {
@@ -59,8 +83,10 @@ for (let i = 97; i <= 122; i += 1){
     const button = document.createElement("button");
     button.innerText = String.fromCharCode(i);
     keyboard.appendChild(button);
-    button.addEventListener("click", e => startGame(e.target, String.fromCharCode(i)))
-}
+    button.addEventListener("click", e => startGame(e.target, String.fromCharCode(i)));    
+};
+
+
 
 getSecretWord();
 playAgain.addEventListener("click", getSecretWord);
