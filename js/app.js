@@ -1,8 +1,3 @@
-const keyboard = document.querySelector(".keyboard");
-const display = document.querySelector(".display");
-const counter = document.querySelector(".counter");
-const hangman = document.querySelector(".gallows-image");
-
 const body = document.querySelector("body");
 let secretWord;
 let wrongLetter;
@@ -19,15 +14,27 @@ document.querySelector('.modal-wrapper').insertAdjacentHTML('beforeend', '<butto
 const playAgain = document.querySelector(".play");
 const modalWindow = document.querySelector(".modal-window");
 
-// modalWindow.insertAdjacentHTML('afterend', '<div class="container"></div>');
-// const container = document.querySelector(".container");
-// container.insertAdjacentHTML('afterbegin', '<div class="gallows"></div>');
-// const gallows = document.querySelector(".gallows");
-// gallows.insertAdjacentHTML('afterbegin', '<img class="gallows-image" src="./images/hangman-0.svg" alt="gallows">');
-// container.insertAdjacentHTML('beforeend', '<div class="quiz"></div>');
-// const quiz = document.querySelector(".quiz");
-// quiz.insertAdjacentHTML('afterbegin', '<ul class="display"></ul>');
-// display.insertAdjacentHTML('afterbegin', '<h3 class="hint text">Hint: </h3>');
+modalWindow.insertAdjacentHTML('afterend', '<div class="container"></div>');
+const container = document.querySelector(".container");
+container.insertAdjacentHTML('afterbegin', '<div class="gallows"></div>');
+const gallows = document.querySelector(".gallows");
+gallows.insertAdjacentHTML('afterbegin', '<img class="gallows-image" src="./images/hangman-0.svg" alt="gallows">');
+const hangman = document.querySelector(".gallows-image");
+container.insertAdjacentHTML('beforeend', '<div class="quiz"></div>');
+const quiz = document.querySelector(".quiz");
+quiz.insertAdjacentHTML('afterbegin', '<ul class="display"></ul>');
+const display = document.querySelector(".display");
+display.insertAdjacentHTML('afterend', '<h3 class="hint text">Hint: </h3>');
+
+const hint = document.querySelector(".hint");
+hint.insertAdjacentHTML('beforeend', '<p class="inner-text clue">Some text</p>');
+hint.insertAdjacentHTML('afterend', '<h3 class="guess text">Incorrect guesses: </h3>');
+const guess = document.querySelector(".guess");
+guess.insertAdjacentHTML('beforeend', '<p class="inner-text counter"> 0 / 6 </p>');
+const counter = document.querySelector(".counter");
+guess.insertAdjacentHTML('afterend', '<div class="keyboard"></div>');
+const keyboard = document.querySelector(".keyboard");
+
 
 
 const gameOver = (win) => {
